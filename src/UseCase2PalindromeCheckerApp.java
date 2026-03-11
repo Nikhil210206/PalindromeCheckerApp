@@ -1,20 +1,21 @@
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.Stack;
 
-public class PalindromeUC6 {
+public class PalindromeUC7 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+        Deque<Character> deque = new LinkedList<>();
+        for (char ch : input.toCharArray()) {
+            deque.addLast(ch);
         }
 
         boolean isPalindrome = true;
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) != stack.pop()) {
+        while (deque.size() > 1) {
+            if (deque.removeFirst() != deque.removeLast()) {
                 isPalindrome = false;
                 break;
             }
